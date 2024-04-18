@@ -14,7 +14,6 @@ import {CircularProgress} from "@mui/material"
 import {ManxEnglishSelector} from "../components/ManxEnglishSelector"
 import {getCorpusStatistics, Statistics} from "../api/CorpusStatistics"
 import {SearchBar} from "../components/SearchBar"
-import YouTube from "react-youtube"
 
 
 export type SearchLanguage = "English" | "Manx"
