@@ -113,15 +113,15 @@ export const Home = () => {
         setQuery(event.target.value)
     }
     
-    function CorpusLink(props : {name:string, isVideo : boolean}) {
-        const prefix = props.isVideo ? "YouTube-" : ""
-        const camera = props.isVideo ?  "🎥" : ""
-        console.log("prefix",prefix)
-        console.log("camera",camera)
-        console.log("isVideo",props.isVideo)
+    function CorpusLink({name = ""}) {
+        const isVideo = name.startsWith("YouTube-")
+        let text : string
+        text = name.replace("YouTube-","")
+        text = text.replace(/-/g      ," ")
+        console.log("text",text)
         return <>
-            {props.isVideo ? camera : ""}
-            <a href={"docs/"+prefix+props.name}>{props.name}</a>
+            {isVideo ?  "🎥" : ""}
+            <a href={"docs/"+name}>{text}</a>
         </>
     }
   useEffect(() => {
@@ -185,7 +185,7 @@ export const Home = () => {
                      🎥Jack As Ned</a> <br/>
             <a title={"watch it!"} href="docs/YouTube-Skeealyn-Vannin-Disk-1-Track-2">
                 🎥Skeealyn Vannin Disk 1 Track 2</a> <br/>
-                    <CorpusLink name="Skeealyn-Vannin-Disk-1-Track-2" isVideo={true} />
+                  <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/>
                 </div>
                 <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
                     href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
