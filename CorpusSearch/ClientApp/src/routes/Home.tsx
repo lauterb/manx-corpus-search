@@ -120,7 +120,7 @@ export const Home = () => {
         text = text.replace(/-/g      ," ")
         console.log("text",text)
         return <>
-            {isVideo ?  "🎥" : ""}
+            {isVideo ?  "🎥" : "📖"}
             <a href={"docs/"+name}>{text}</a>
         </>
     }
@@ -142,7 +142,6 @@ export const Home = () => {
         loadStatsSync().then((x) => setStats(x)).catch(() => setStats("error"))
     }, [])
     
-    //Wilsons-Sermons
     //Cooinaghtyn-Manninagh
     //Manx-Dishes
     //Cooinaghtyn-My-Aegid
@@ -180,12 +179,16 @@ export const Home = () => {
                         </span>
                     </>
                 }
-                <div>Featured Transcriptions:<br/> <a title="watch video of Jack and Ned"
-                                                      href="docs/YouTube-Jack-As-Ned-1949">
-                     🎥Jack As Ned</a> <br/>
-            <a title={"watch it!"} href="docs/YouTube-Skeealyn-Vannin-Disk-1-Track-2">
-                🎥Skeealyn Vannin Disk 1 Track 2</a> <br/>
-                  <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/>
+                <br/>
+                <div>New and Featured Transcriptions:<br/>
+                <CorpusLink name="YouTube-Jack-As-Ned-1949"/><br/>
+                <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/><br/>
+                <CorpusLink name="WilsonSermonsI"/><br/>
+                <CorpusLink name="Cooinaghtyn-Manninagh"/><br/>
+                <CorpusLink name="Manx-Dishes"/><br/>
+                <CorpusLink name="Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley"/><br/>
+                <CorpusLink name="Destruction-of-the-Manx-Herring-Fleet"/><br/>
+                <CorpusLink name="Slattysn-1904"/><br/>
                 </div>
                 <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
                     href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
