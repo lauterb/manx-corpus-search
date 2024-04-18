@@ -14,6 +14,7 @@ import {CircularProgress} from "@mui/material"
 import {ManxEnglishSelector} from "../components/ManxEnglishSelector"
 import {getCorpusStatistics, Statistics} from "../api/CorpusStatistics"
 import {SearchBar} from "../components/SearchBar"
+import YouTube from "react-youtube"
 
 
 export type SearchLanguage = "English" | "Manx"
@@ -113,7 +114,18 @@ export const Home = () => {
         setQuery(event.target.value)
     }
     
-    useEffect(() => {
+    function CorpusLink(props : {name:string, isVideo : boolean}) {
+        const prefix = props.isVideo ? "YouTube-" : ""
+        const camera = props.isVideo ?  "🎥" : ""
+        console.log("prefix",prefix)
+        console.log("camera",camera)
+        console.log("isVideo",props.isVideo)
+        return <>
+            {props.isVideo ? camera : ""}
+            <a href={"docs/"+prefix+props.name}>{props.name}</a>
+        </>
+    }
+  useEffect(() => {
         if (!query && searchLanguage == "Manx") {
             navigation("/", { replace: true })
        } else {
@@ -130,6 +142,13 @@ export const Home = () => {
          
         loadStatsSync().then((x) => setStats(x)).catch(() => setStats("error"))
     }, [])
+    
+    //Wilsons-Sermons
+    //Cooinaghtyn-Manninagh
+    //Manx-Dishes
+    //Cooinaghtyn-My-Aegid
+    //Destruction-of-the-Manx-Herring-Fleet
+    //Slattysyn-1904                </div>
     
     return (
         <div>
@@ -150,20 +169,31 @@ export const Home = () => {
             {hasNoSearch && stats && <span className={"homeText"}>
                 {stats != "error" ?
                     <span className={"homeText"} style={{textAlign: "center"}}>
-                        <span style={{display: "inline"}}>Search our growing collection of over <b title={`${stats.uniqueManxWordCount.toLocaleString()} unique words`}>{stats.manxWordCount.toLocaleString()} Manx words</b> or&nbsp;<a href={"/Browse"}>browse&nbsp;{stats.documentCount.toLocaleString()} documents</a></span>
-                    </span>    
-                :
+                        <span style={{display: "inline"}}>Search our growing collection of over <b
+                            title={`${stats.uniqueManxWordCount.toLocaleString()} unique words`}>{stats.manxWordCount.toLocaleString()} Manx words</b> or&nbsp;
+                            <a href={"/Browse"}>browse&nbsp;{stats.documentCount.toLocaleString()} documents</a></span>
+                    </span>
+                    :
                     <>
                         <span className={"homeText"}>
-                            <span style={{display: "inline"}}>Enter a search term, or&nbsp;<a href={"/Browse"}>Browse</a>&nbsp;all content</span>
+                            <span style={{display: "inline"}}>Enter a search term, or&nbsp;<a
+                                href={"/Browse"}>Browse</a>&nbsp;all content</span>
                         </span>
                     </>
                 }
-                <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
+                <div>Featured Transcriptions:<br/> <a title="watch video of Jack and Ned"
+                                                      href="docs/YouTube-Jack-As-Ned-1949">
+                     🎥Jack As Ned</a> <br/>
+            <a title={"watch it!"} href="docs/YouTube-Skeealyn-Vannin-Disk-1-Track-2">
+                🎥Skeealyn Vannin Disk 1 Track 2</a> <br/>
+                    <CorpusLink name="Skeealyn-Vannin-Disk-1-Track-2" isVideo={true} />
+                </div>
+                <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
+                    href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
                 <br/>
-                <span>If we're missing anything, please let us know at <a href="mailto:corpus-submissions@gaelg.im">corpus-submissions@gaelg.im</a>.</span>
+                <span>If we're missing anything, please let us know at <a
+                    href="mailto:corpus-submissions@gaelg.im">corpus-submissions@gaelg.im</a>.</span>
             </span>}
-            
             {!hasNoSearch && hasError && <span className={"homeText"}>
                 Something went wrong, please try again
             </span>}
