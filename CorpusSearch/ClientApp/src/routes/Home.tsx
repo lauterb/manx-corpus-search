@@ -126,8 +126,17 @@ export const Home = () => {
     }
     function newbieLinks()
     {
-        const newbies = ["WilsonSermonsI",
-                                 "Slattysn-1904"];
+        const newbies = [
+            "YouTube-Jack-As-Ned-1949",
+            "YouTube-Skeealyn-Vannin-Disk-1-Track-2",
+            "WilsonSermonsI",
+            "Cooinaghtyn-Manninagh",
+            "Manx-Dishes",
+            "Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley",
+            "Destruction-of-the-Manx-Herring-Fleet",
+            "Slattysn-1904"
+        ]
+        
         const len = newbies.length
         
         let frag = <></>
@@ -136,7 +145,6 @@ export const Home = () => {
         for ( let i=0; i < len ; i++) {
             const link = <CorpusLink  name={newbies[i]}/>
             newarray.push(link)
-            newarray.push(<br/>)
         }
         //const link = <CorpusLink name={newbies[0]}/>
         return <div>{newarray}</div>
@@ -194,14 +202,6 @@ export const Home = () => {
                 }
                 <br/>
                 <div>New and Featured Transcriptions:<br/>
-                <CorpusLink name="YouTube-Jack-As-Ned-1949"/>
-                <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/>
-                <CorpusLink name="WilsonSermonsI"/>
-                <CorpusLink name="Cooinaghtyn-Manninagh"/>
-                <CorpusLink name="Manx-Dishes"/>
-                <CorpusLink name="Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley"/>
-                <CorpusLink name="Destruction-of-the-Manx-Herring-Fleet"/>
-                <CorpusLink name="Slattysn-1904"/>
                 {newbieLinks()}    
                 </div>
                 <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
