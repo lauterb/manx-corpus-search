@@ -113,16 +113,33 @@ export const Home = () => {
         setQuery(event.target.value)
     }
     
-    function CorpusLink({name = ""}) {
+    function CorpusLink({name = ""}) : JSX.Element{
         const isVideo = name.startsWith("YouTube-")
         let text : string
         text = name.replace("YouTube-","")
         text = text.replace(/-/g      ," ")
         console.log("text",text)
-        return <>
+        return <div>
             {isVideo ?  "🎥" : "📖"}
             <a href={"docs/"+name}>{text}</a>
-        </>
+        </div>
+    }
+    function newbieLinks()
+    {
+        const newbies = ["WilsonSermonsI"]
+        const len = newbies.length
+        
+        let frag = <></>
+        
+        let newarray : JSX.Element[] = []
+        for ( let i=0; i < len ; i++) {
+            const link = <CorpusLink  name={newbies[i]}/>
+            newarray.push(link)
+            newarray.push(<br/>)
+        }
+        //const link = <CorpusLink name={newbies[0]}/>
+        return <div>{newarray}</div>
+
     }
   useEffect(() => {
         if (!query && searchLanguage == "Manx") {
@@ -142,11 +159,6 @@ export const Home = () => {
         loadStatsSync().then((x) => setStats(x)).catch(() => setStats("error"))
     }, [])
     
-    //Cooinaghtyn-Manninagh
-    //Manx-Dishes
-    //Cooinaghtyn-My-Aegid
-    //Destruction-of-the-Manx-Herring-Fleet
-    //Slattysyn-1904                </div>
     
     return (
         <div>
@@ -181,14 +193,14 @@ export const Home = () => {
                 }
                 <br/>
                 <div>New and Featured Transcriptions:<br/>
-                <CorpusLink name="YouTube-Jack-As-Ned-1949"/><br/>
-                <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/><br/>
-                <CorpusLink name="WilsonSermonsI"/><br/>
-                <CorpusLink name="Cooinaghtyn-Manninagh"/><br/>
-                <CorpusLink name="Manx-Dishes"/><br/>
-                <CorpusLink name="Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley"/><br/>
-                <CorpusLink name="Destruction-of-the-Manx-Herring-Fleet"/><br/>
-                <CorpusLink name="Slattysn-1904"/><br/>
+                <CorpusLink name="YouTube-Jack-As-Ned-1949"/>
+                <CorpusLink name="YouTube-Skeealyn-Vannin-Disk-1-Track-2"/>
+                <CorpusLink name="WilsonSermonsI"/>
+                <CorpusLink name="Cooinaghtyn-Manninagh"/>
+                <CorpusLink name="Manx-Dishes"/>
+                <CorpusLink name="Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley"/>
+                <CorpusLink name="Destruction-of-the-Manx-Herring-Fleet"/>
+                <CorpusLink name="Slattysn-1904"/>
                 </div>
                 <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
                     href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
