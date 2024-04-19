@@ -127,6 +127,7 @@ export const Home = () => {
     function newbieLinks()
     {
         const newbies = [
+            "YouTube-Captan-y-Skeerey-as-yn-Cannabis",  
             "YouTube-Jack-As-Ned-1949",
             "YouTube-Skeealyn-Vannin-Disk-1-Track-2",
             "WilsonSermonsI",
