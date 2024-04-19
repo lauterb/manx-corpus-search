@@ -126,7 +126,8 @@ export const Home = () => {
     }
     function newbieLinks()
     {
-        const newbies = ["WilsonSermonsI"]
+        const newbies = ["WilsonSermonsI",
+                                 "Slattysn-1904"];
         const len = newbies.length
         
         let frag = <></>
@@ -201,6 +202,7 @@ export const Home = () => {
                 <CorpusLink name="Cooinaghtyn-my-aegid-as-Cooinaghtyn-elley"/>
                 <CorpusLink name="Destruction-of-the-Manx-Herring-Fleet"/>
                 <CorpusLink name="Slattysn-1904"/>
+                {newbieLinks()}    
                 </div>
                 <span style={{display: "inline", marginTop: "2em"}}>Support our revitalisation efforts by <a
                     href={"/MailingList"}>signing up for our mailing list</a>. We'll email once in a while with updates to the corpus & other projects.</span>
